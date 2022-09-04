@@ -100,14 +100,23 @@ function clearPageAfterNewSearchTitle() {
 }
 
 
-document.addEventListener('scroll', () => {
-  let contentHeight = document.body.offsetHeight;
-  let yOffset = window.pageYOffset;
-  let windowHeight = window.innerHeight;
-  let y = yOffset + windowHeight;
-  if (y >= contentHeight) {
+// document.addEventListener('scroll', () => {
+//   let contentHeight = document.body.offsetHeight;
+//   let yOffset = window.pageYOffset;
+//   let windowHeight = window.innerHeight;
+//   let y = yOffset + windowHeight;
+//   if (y >= contentHeight) {
+//     onLoadMore();
+//     console.log('catch');
+//   }
+// });
+
+document.addEventListener('scroll', () => { 
+  if (
+    window.scrollY + window.innerHeight >=
+    document.documentElement.scrollHeight * 0.9
+  ) {
     onLoadMore();
-    console.log('catch');
   }
-});
+} )
 
