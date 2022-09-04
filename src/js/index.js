@@ -115,14 +115,6 @@ function clearPageAfterNewSearchTitle() {
 //   }
 // });
 
-// document.addEventListener('scroll', () => { 
-//   if (
-//     window.pageYOffset + window.innerHeight >=
-//     document.body.offsetHeight
-//   ) {
-//     onLoadMore();
-//   }
-// });
 
 window.addEventListener('scroll', throttle(infinityScroll, 300));
 
