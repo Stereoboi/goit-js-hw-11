@@ -2,6 +2,7 @@ import ImageApiService from './api-service'
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 import Notiflix from 'notiflix';
+import throttle from "lodash.throttle";
 
 const gallery = new SimpleLightbox('.gallery a', {
     scrollZoom: true,
@@ -123,7 +124,7 @@ function clearPageAfterNewSearchTitle() {
 //   }
 // });
 
-window.addEventListener('scroll', infinityScroll)
+window.addEventListener('scroll', throttle(infinityScroll, 300));
 
 function infinityScroll() {
   const documentRect = document.documentElement.getBoundingClientRect()
