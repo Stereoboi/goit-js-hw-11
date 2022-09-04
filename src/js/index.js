@@ -101,6 +101,9 @@ function clearPageAfterNewSearchTitle() {
 
 
 // window.addEventListener('scroll', () => {
+//   console.log('document.body.offsetHeight',document.body.offsetHeight);
+//   console.log('yOffset',window.pageYOffset);
+//   console.log('windowHeight',window.innerHeight);
 //   let contentHeight = document.body.offsetHeight;
 //   let yOffset = window.pageYOffset;
 //   let windowHeight = window.innerHeight;
@@ -111,12 +114,20 @@ function clearPageAfterNewSearchTitle() {
 //   }
 // });
 
-document.addEventListener('scroll', () => { 
-  if (
-    window.pageYOffset + window.innerHeight >=
-    document.body.offsetHeight
-  ) {
+// document.addEventListener('scroll', () => { 
+//   if (
+//     window.pageYOffset + window.innerHeight >=
+//     document.body.offsetHeight
+//   ) {
+//     onLoadMore();
+//   }
+// });
+
+window.addEventListener('scroll', infinityScroll)
+
+function infinityScroll() {
+  const documentRect = document.documentElement.getBoundingClientRect()
+  if (documentRect.bottom < document.documentElement.clientHeight + 150) {
     onLoadMore();
   }
-});
-
+}
