@@ -100,7 +100,7 @@ function clearPageAfterNewSearchTitle() {
 }
 
 
-window.addEventListener('scroll', () => {
+document.addEventListener('scroll', () => {
   let contentHeight = document.body.offsetHeight;
   let yOffset = window.pageYOffset;
   let windowHeight = window.innerHeight;
