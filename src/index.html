@@ -8,6 +8,14 @@
     <script type="module" src="./js/index.js"></script>
   </head>
   <body>
+    <form action="" id="search-form" class="search-bar search-form">
+	<input type="text" name="searchQuery" autocomplete="off" pattern=".*\S.*" required >
+	<button class="search-btn" type="submit">
+		<span>Search</span>
+	</button>
+</form>
+
+<div class="gallery"></div>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
     <include src="./partials/search.html"></include>
   </body>
