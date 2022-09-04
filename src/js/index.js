@@ -107,6 +107,7 @@ window.addEventListener('scroll', () => {
   let y = yOffset + windowHeight;
   if (y >= contentHeight) {
     onLoadMore();
+    console.log('catch');
   }
 });
 
