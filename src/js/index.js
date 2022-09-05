@@ -129,9 +129,9 @@ function infinityScroll() {
   if (documentRect.bottom < document.documentElement.clientHeight + 1000) {
     onLoadMore();
     // console.log(documentRect.bottom);
-    if (documentRect.bottom === document.documentElement.clientHeight) {
+  }
+  if (documentRect.bottom === document.documentElement.clientHeight) {
       Notiflix.Notify.failure(`We're sorry, but you've reached the end of search results.`);
       
     }
-  }
 }
