@@ -134,7 +134,7 @@ function infinityScroll() {
       Notiflix.Notify.failure(`We're sorry, but you've reached the end of search results.`);
   }
   console.log(window.innerHeight);
-  console.log(documentRect.bottom);
+  console.log(Math.ceil(documentRect.bottom));
   console.log(window.innerHeight === Math.ceil(documentRect.bottom));
 
 }
