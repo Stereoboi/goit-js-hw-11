@@ -130,7 +130,7 @@ function infinityScroll() {
     onLoadMore();
     // console.log(documentRect.bottom);
   }
-  if (window.innerHeight === documentRect.bottom) {
+  if (window.innerHeight === Math.ceil(documentRect.bottom) ) {
       Notiflix.Notify.failure(`We're sorry, but you've reached the end of search results.`);
       console.log('works');
   }
