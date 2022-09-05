@@ -18,8 +18,8 @@ export default class ImageApiService {
 
          try {
             const response = await axios.get(url);
-            // console.log(response.data);
-            this.incrementPage();
+            // console.log(response);
+            // this.incrementPage();
             return response
         }
          catch (error) {

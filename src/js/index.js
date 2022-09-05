@@ -25,9 +25,10 @@ refs.searchForm.addEventListener('submit', onSearch);
 
 
 const apiService = new ImageApiService();
+const dataHits = apiService;
 
-function onSearch(event) {
-   
+
+ function onSearch(event) {
     event.preventDefault();
     apiService.query = event.currentTarget.elements.searchQuery.value;
     apiService.resetPage();
@@ -36,15 +37,14 @@ function onSearch(event) {
     apiService.fetchImages().then(totalHits);
 }
 
-function totalHits(response) {
-  if (response.data.totalHits === 0) {
-    return
-  }
-   Notiflix.Notify.info(`Hooray! We found ${ response.data.totalHits} images.`);
+ function totalHits(response) {
+  Notiflix.Notify.info(`Hooray! We found ${response.data.totalHits} images.`);
+  console.log(dataHits);
 }
 
-function onLoadMore() {
-  apiService.fetchImages().then(renderImageCard);
+async function onLoadMore() {
+  await apiService.incrementPage();
+  await apiService.fetchImages().then(renderImageCard);
   gallery.refresh();
 }
 
