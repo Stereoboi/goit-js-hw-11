@@ -134,9 +134,4 @@ function infinityScroll() {
       Notiflix.Notify.failure(`We're sorry, but you've reached the end of search results.`);
       console.log('works');
   }
-  console.log(window.innerHeight);
-  console.log(documentRect.bottom);
-  // console.log('a',window.pageYOffset);
-  // console.log('b',window.innerHeight);
-  // console.log('c',documentRect.bottom);
 }
