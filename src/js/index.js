@@ -35,7 +35,11 @@ const apiService = new ImageApiService();
 }
 
  function totalHitsNotification(response) {
-  Notiflix.Notify.info(`Hooray! We found ${response.data.totalHits} images.`);
+   if (response.data.totalHits === 0) {
+    return
+   }
+   Notiflix.Notify.info(`Hooray! We found ${response.data.totalHits} images.`);
+  
 }
 
 async function onLoadMore() {
