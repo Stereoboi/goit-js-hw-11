@@ -23,10 +23,7 @@ const refs = {
 refs.searchForm.addEventListener('submit', onSearch);
 // refs.loadMoreBtn.addEventListener('click', onLoadMore);
 
-
 const apiService = new ImageApiService();
-const dataHits = apiService;
-
 
  function onSearch(event) {
     event.preventDefault();
@@ -34,12 +31,11 @@ const dataHits = apiService;
     apiService.resetPage();
     clearPageAfterNewSearchTitle();
     apiService.fetchImages().then(renderImageCard);
-    apiService.fetchImages().then(totalHits);
+    apiService.fetchImages().then(totalHitsNotification);
 }
 
- function totalHits(response) {
+ function totalHitsNotification(response) {
   Notiflix.Notify.info(`Hooray! We found ${response.data.totalHits} images.`);
-  console.log(dataHits);
 }
 
 async function onLoadMore() {
@@ -58,6 +54,11 @@ function renderImageCard(response) {
     Notiflix.Notify.failure(`Sorry, there are no images matching your search query. Please try again.`);
     return
   }
+  // if (response.data.status === 400) {
+  //   Notiflix.Notify.failure(`We're sorry, but you've reached the end of search results.`);
+  //   console.clear();
+  //   return
+  // }
   const apiResponse = response.data.hits
   const imgCard = apiResponse.map(
       ({
@@ -116,11 +117,15 @@ function clearPageAfterNewSearchTitle() {
 // });
 
 
-window.addEventListener('scroll', throttle(infinityScroll, 300));
+window.addEventListener('scroll', throttle(infinityScroll, 250));
 
 function infinityScroll() {
+  
   const documentRect = document.documentElement.getBoundingClientRect()
-  if (documentRect.bottom < document.documentElement.clientHeight + 150) {
+  if (documentRect.bottom < document.documentElement.clientHeight + 1000) {
     onLoadMore();
-  }
+    // console.log(documentRect.bottom);
+    if (documentRect.bottom === document.documentElement.clientHeight) {
+      Notiflix.Notify.failure(`We're sorry, but you've reached the end of search results.`);
+    }
 }
